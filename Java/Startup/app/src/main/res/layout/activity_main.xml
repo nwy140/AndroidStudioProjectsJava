@@ -5,14 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.silentwolfstudios.startup.MainActivity">
+<!--API References
+    https://developer.android.com/reference/android/view/package-summary.html
+    https://developer.android.com/reference/android/R.styleable.html-->
+    
+    <!--<TextView-->
+        <!--android:id="@+id/tv01"-->
+        <!--android:layout_width="164dp"-->
+        <!--android:layout_height="74dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="58dp"-->
+        <!--android:text="FUCK YOU"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="30sp"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<TextView-->
+        <!--android:id="@+id/tv02"-->
+        <!--android:layout_width="195dp"-->
+        <!--android:layout_height="184dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:text="App Developed by the person sitting next to you"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="24sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tv01"-->
+        <!--app:layout_constraintVertical_bias="0.148" />-->
+
+    <EditText
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:gravity="top"
+        />
 
 </android.support.constraint.ConstraintLayout>
