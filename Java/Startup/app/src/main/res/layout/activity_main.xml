@@ -25,10 +25,9 @@
          />
 
         <Button
+            android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
             android:text="Save"
             />
 
@@ -38,4 +37,4 @@
 
 </android.support.constraint.ConstraintLayout>
 
-<!--layout stands for ratio of item taking up out of available layout space EG  -->
+<!--layout_weight stands for ratio of item taking up out of available layout space EG  -->
