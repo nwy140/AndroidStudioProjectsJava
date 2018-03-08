@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
             String line;
             while ((line=reader.readLine()) != null){
-                etDes.append(line);
+                etDes.append(line); //reads txt file and appends all lines to etDes
                 etDes.append("\n"); //next line
             }
             fis.close();
