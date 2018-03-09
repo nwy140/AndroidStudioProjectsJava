@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-                Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
                 if(mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
-                Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
             }
         });
 
