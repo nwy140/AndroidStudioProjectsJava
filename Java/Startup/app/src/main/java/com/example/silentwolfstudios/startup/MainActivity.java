@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         addSaveButtonListener();
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        boolean fileSaved = prefs.edit().putBoolean(FILESAVED, false); //indicates file hasn't been saved
+        boolean fileSaved =  prefs.getBoolean(FILESAVED, false); //indicates file hasn't been saved
 
 
         if (fileSaved) {
@@ -97,19 +97,22 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
                    FileOutputStream fos = openFileOutput(TEXTFILE, Context.MODE_PRIVATE) ; //save text to buffer file as Private , cant be accessed by user
                     fos.write(etDesText.getBytes()); //pass number of bytes of input from etDesText
                     fos.close();
-                    Toast.makeText(getApplicationContext(), "Saved Quickie Note" ,Toast.LENGTH_LONG).show(); //add custom toast log text
 
                     SharedPreferences prefs =  getPreferences(MODE_PRIVATE); //only this app can access the pref files //pref are like savedata of an app
                     SharedPreferences.Editor editor = prefs.edit();  //edit preference
                     editor.putBoolean(FILESAVED,true); //indicates user have saved file
                     editor.commit(); //saved prefs
 
+                    Toast.makeText(MainActivity.this, R.string.toast_can_save ,Toast.LENGTH_LONG).show(); //add custom toast log text
+
                 } catch (Exception ex){
                     ex.printStackTrace(); //tells you where exception occured
-                    Log.d(DEBUGTAG, "Unable to save file");
+                    Toast.makeText(MainActivity.this, R.string.toast_cant_save  ,Toast.LENGTH_LONG).show(); //add custom toast log text
+
+                    //  Log.d(DEBUGTAG, "Unable to save file");
                 }
 
-                Log.d(DEBUGTAG, "SaveButtonClicked: "+ etDesText); //Debug Logs to LogCat only// Must enable Debuggable on LogCat to see the Log
+              //  Log.d(DEBUGTAG, "SaveButtonClicked: "+ etDesText); //Debug Logs to LogCat only// Must enable Debuggable on LogCat to see the Log
             }
         }) ;
 
