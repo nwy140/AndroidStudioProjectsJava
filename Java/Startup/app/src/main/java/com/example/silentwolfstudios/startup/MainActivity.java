@@ -15,15 +15,38 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 
+import com.google.android.gms.ads.MobileAds;
+
+
+
+import com.google.android.gms.ads.AdRequest;
+
+import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+
+
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
 
+
     public static final String DEBUGTAG ="NWY";  // final means can only be assigned once
-    public static final String TEXTFILE = "notesquirrel.txt"; //Finame
+    public static final String TEXTFILE = "notesquirrel.txt"; //Filename
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
+
+       MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
+
+        loadInterstitialAd();
 
         addSaveButtonListener();
 
@@ -52,7 +75,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     }
 
     private  void addSaveButtonListener(){
-        final Button saveBtn = (Button)findViewById(R.id.save); //Access Item With ID Save from Activity.Main
+        final Button saveBtn = (Button)findViewById(R.id.btnSave); //Access Item With ID Save from Activity.Main
                             // Cast to Button
         saveBtn.setOnClickListener( new View.OnClickListener(){ //creating OnClickListener // new is an anymous class
             @Override
@@ -60,21 +83,52 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
                EditText etDes = (EditText) findViewById(R.id.etDes); //Cast to EditText
 
                 String etDesText = etDes.getText().toString();
+//
 
                 try {
                    FileOutputStream fos = openFileOutput(TEXTFILE, Context.MODE_PRIVATE) ; //save text to buffer file as Private , cant be accessed by user
                     fos.write(etDesText.getBytes()); //pass number of bytes of input from etDesText
                     fos.close();
+                    Toast.makeText(getApplicationContext(), "Saved Quickie Note" ,Toast.LENGTH_LONG).show(); //add custom toast log text
                 } catch (Exception ex){
                     ex.printStackTrace(); //tells you where exception occured
                     Log.d(DEBUGTAG, "Unable to save file");
                 }
 
                 Log.d(DEBUGTAG, "SaveButtonClicked: "+ etDesText); //Debug Logs to LogCat only// Must enable Debuggable on LogCat to see the Log
-
             }
         }) ;
 
 
+    }
+
+// InterstitialAd
+    private InterstitialAd mInterstitialAd;
+
+//https://code.tutsplus.com/tutorials/how-to-monetize-your-android-apps-with-admob--cms-29255
+
+    public void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3043579075978700/1530811311");
+        mInterstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
 }
