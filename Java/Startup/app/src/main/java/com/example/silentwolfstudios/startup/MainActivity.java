@@ -1,6 +1,7 @@
 package com.example.silentwolfstudios.startup;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,20 +38,27 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
     public static final String DEBUGTAG ="NWY";  // final means can only be assigned once
     public static final String TEXTFILE = "notesquirrel.txt"; //Filename
-
+    public static final String FILESAVED = "FileSaved";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
 
-       MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
+        MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
 
         loadInterstitialAd();
 
         addSaveButtonListener();
 
-        loadSavedFile();
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        boolean fileSaved = prefs.edit().putBoolean(FILESAVED, false); //indicates file hasn't been saved
+
+
+        if (fileSaved) {
+            loadSavedFile();
+
+        }
     }
 
     private void loadSavedFile(){
@@ -90,6 +98,12 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
                     fos.write(etDesText.getBytes()); //pass number of bytes of input from etDesText
                     fos.close();
                     Toast.makeText(getApplicationContext(), "Saved Quickie Note" ,Toast.LENGTH_LONG).show(); //add custom toast log text
+
+                    SharedPreferences prefs =  getPreferences(MODE_PRIVATE); //only this app can access the pref files //pref are like savedata of an app
+                    SharedPreferences.Editor editor = prefs.edit();  //edit preference
+                    editor.putBoolean(FILESAVED,true); //indicates user have saved file
+                    editor.commit(); //saved prefs
+
                 } catch (Exception ex){
                     ex.printStackTrace(); //tells you where exception occured
                     Log.d(DEBUGTAG, "Unable to save file");

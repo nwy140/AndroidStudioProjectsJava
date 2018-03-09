@@ -1,0 +1,3 @@
+git clean -fdx clear all untracked ignored files
+
+git reset --hard overwrite all changes with previous commit
