@@ -4,6 +4,7 @@
     <string name="save">Save</string>
     <string name="toast_cant_save">Saved Quickie Note</string>
     <string name="toast_can_save">Saved</string>
+    <string name="password_image">Password Image</string>
 
 
 </resources>
