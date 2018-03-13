@@ -1,6 +1,7 @@
 package com.example.silentwolfstudios.startup;
 
 import android.content.DialogInterface;
+import android.graphics.Point;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class ImageActivity extends AppCompatActivity {
+import java.util.List;
+
+public class ImageActivity extends AppCompatActivity implements PointCollectorListener{
+    private PointCollector pointCollector = new PointCollector();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,9 @@ public class ImageActivity extends AppCompatActivity {
 
         addTouchListener();
         showPrompt();
+
+        pointCollector.setListener(this); // pass this so the listener gets the listener from ImageActivity
+
     }
 
     private  void showPrompt(){
@@ -42,19 +49,11 @@ public class ImageActivity extends AppCompatActivity {
     private void addTouchListener(){
         ImageView ivTouchCat = (ImageView) findViewById(R.id.ivTouchCat);
 
-        ivTouchCat.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                float x = event.getX();
-                float y = event.getY();
-
-                String message = String.format("Coordinates: (%.2f, %.2f)", x,y);
-                Toast.makeText(ImageActivity.this, message,Toast.LENGTH_LONG).show();
-
-                return false;
-            }
-        });
+        ivTouchCat.setOnTouchListener(pointCollector); //set listener as ImageActivity's ivTouchCat//removed OnTouchListener method and place it as implemented by PointerCollecter class //Now calls implemented method in PointCollector interface //
     }
 
+    @Override
+    public void pointsCollected(List<Point> points) {
+        Toast.makeText(ImageActivity.this, "Collected Points: " + points.size(),Toast.LENGTH_LONG).show();
+    }
 }

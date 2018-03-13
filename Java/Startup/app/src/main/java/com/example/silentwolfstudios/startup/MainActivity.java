@@ -148,4 +148,5 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
     }
+
 }
