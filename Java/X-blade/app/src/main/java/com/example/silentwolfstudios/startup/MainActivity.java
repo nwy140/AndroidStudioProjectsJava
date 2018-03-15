@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
                     Toast.makeText(MainActivity.this,"Okay, I BELIEVE YOU",Toast.LENGTH_SHORT).show();
 
                 }
-                tvX_Blade.setText(x_bladeNo+" χ-blade");
+                tvX_Blade.setText(x_bladeNo+" χ-blades");
                 Toast.makeText(MainActivity.this,R.string.app_name,Toast.LENGTH_SHORT).show();
 
                 x_blade.start();
-
+//TODO add okay i believe you for each 100s // add HighScore!!
 
             }
         });
