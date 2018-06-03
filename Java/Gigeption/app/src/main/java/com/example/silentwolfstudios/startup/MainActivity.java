@@ -37,9 +37,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
 
-    TextView tvDidYouKnow = (TextView)findViewById(R.id.tvDidYouKnow);
-    TextView tvFactDes = (TextView)findViewById(R.id.tvFactDes);
-    Button btnFunFact = (Button)findViewById(R.id.btnFunFact);
+    TextView tvDidYouKnow;
+    TextView tvFactDes ;
+    Button btnFunFact ;
     ConstraintLayout nConstraint;
 
 
@@ -51,16 +51,25 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
 
         loadInterstitialAd();
+        getIds();
         addbtnFunFactListener();
     }
 
-public void addbtnFunFactListener(){
-        //Button btnFunFact = (Button)findViewById(R.id.btnFunFact);
+    private void getIds(){
+        tvDidYouKnow = (TextView)findViewById(R.id.tvDidYouKnow);
+        tvFactDes = (TextView)findViewById(R.id.tvFactDes);
+        btnFunFact = (Button)findViewById(R.id.btnFunFact);
+
+    }
+
+
+private void addbtnFunFactListener(){
+      //  btnFunFact = (Button)findViewById(R.id.btnFunFact);
         btnFunFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-          //      TextView tvFactDes = (TextView)findViewById(R.id.tvFactDes);
+                //tvFactDes = (TextView)findViewById(R.id.tvFactDes);
                 Toast.makeText(getApplicationContext(), "Button Clicked " + tvFactDes.getText().toString(), Toast.LENGTH_SHORT).show();
 
             }
