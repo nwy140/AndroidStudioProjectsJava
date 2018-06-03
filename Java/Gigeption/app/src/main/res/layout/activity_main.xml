@@ -25,7 +25,7 @@
         />
 
     <TextView
-0
+
         android:id="@+id/tvFactDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         />
 
     <Button
-        android:id="@+id/btFunFact"
+        android:id="@+id/btnFunFact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

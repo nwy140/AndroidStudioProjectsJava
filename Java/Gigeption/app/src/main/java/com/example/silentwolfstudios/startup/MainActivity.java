@@ -2,12 +2,14 @@ package com.example.silentwolfstudios.startup;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -34,6 +36,41 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
+
+    TextView tvDidYouKnow = (TextView)findViewById(R.id.tvDidYouKnow);
+    TextView tvFactDes = (TextView)findViewById(R.id.tvFactDes);
+    Button btnFunFact = (Button)findViewById(R.id.btnFunFact);
+    ConstraintLayout nConstraint;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
+
+        MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
+
+        loadInterstitialAd();
+        addbtnFunFactListener();
+    }
+
+public void addbtnFunFactListener(){
+        //Button btnFunFact = (Button)findViewById(R.id.btnFunFact);
+        btnFunFact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+          //      TextView tvFactDes = (TextView)findViewById(R.id.tvFactDes);
+                Toast.makeText(getApplicationContext(), "Button Clicked " + tvFactDes.getText().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+}
+
+
+
+
+
 
 
     // InterstitialAd
@@ -67,29 +104,3 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     }
 
 }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
-
-        MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
-
-        loadInterstitialAd();
-    }
-
-    public void OnC
-
-
-
-
-
-
-
-
-
-
-
-
-
-
