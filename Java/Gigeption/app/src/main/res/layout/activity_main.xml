@@ -10,7 +10,7 @@
 
     <TextView
 
-        android:id="@+id/textView"
+        android:id="@+id/tvDidYouKnow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dp"
@@ -25,8 +25,8 @@
         />
 
     <TextView
-
-        android:id="@+id/textView"
+0
+        android:id="@+id/tvFactDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -43,6 +43,7 @@
         />
 
     <Button
+        android:id="@+id/btFunFact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -53,8 +54,10 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
 
-
         android:text="Show another fun fact"
+        android:background="@color/white"
+        android:paddingTop="15dp"
+        android:paddingBottom="35dp"
 
         app:layout_constraintVertical_bias="0.744" />
 </android.support.constraint.ConstraintLayout>

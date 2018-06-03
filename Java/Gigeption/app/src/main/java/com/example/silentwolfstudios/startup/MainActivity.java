@@ -35,17 +35,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
 
-        MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
-
-        loadInterstitialAd();
-    }
-
-// InterstitialAd
+    // InterstitialAd
     private InterstitialAd mInterstitialAd;
 
 //https://code.tutsplus.com/tutorials/how-to-monetize-your-android-apps-with-admob--cms-29255
@@ -58,7 +49,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
             @Override
             public void onAdLoaded() {
                 super.onAdLoaded();
-               // Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
                 if(mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }
@@ -67,7 +58,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
-              //  Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,3 +67,29 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     }
 
 }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
+
+        MobileAds.initialize(this, "ca-app-pub-3043579075978700~9054078114");
+
+        loadInterstitialAd();
+    }
+
+    public void OnC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
