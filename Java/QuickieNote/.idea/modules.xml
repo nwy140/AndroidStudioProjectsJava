@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuickieNote.iml" filepath="$PROJECT_DIR$/QuickieNote.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Startup.iml" filepath="$PROJECT_DIR$/Startup.iml" />
+      <module fileurl="file://D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\QuickieNote.iml" filepath="D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\QuickieNote.iml" />
+      <module fileurl="file://D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\Startup.iml" filepath="D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\Startup.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\app\app.iml" filepath="D:\Projects\AndroidStudioProjectsJava\Java\QuickieNote\app\app.iml" />
     </modules>
   </component>
 </project>

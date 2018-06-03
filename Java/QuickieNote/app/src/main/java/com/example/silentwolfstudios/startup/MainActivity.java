@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         boolean fileSaved =  prefs.getBoolean(FILESAVED, false); //indicates file hasn't been saved
-
-
+        Toast.makeText(this,"You are watching my app", Toast.LENGTH_LONG).show();
         if (fileSaved) {
             loadSavedFile();
 

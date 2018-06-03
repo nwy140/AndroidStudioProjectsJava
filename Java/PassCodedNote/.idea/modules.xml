@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PassCodedNote.iml" filepath="$PROJECT_DIR$/PassCodedNote.iml" />
+      <module fileurl="file://D:\Projects\AndroidStudioProjectsJava\Java\PassCodedNote\PassCodedNote.iml" filepath="D:\Projects\AndroidStudioProjectsJava\Java\PassCodedNote\PassCodedNote.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Projects\AndroidStudioProjectsJava\Java\PassCodedNote\app\app.iml" filepath="D:\Projects\AndroidStudioProjectsJava\Java\PassCodedNote\app\app.iml" />
     </modules>
   </component>
 </project>
