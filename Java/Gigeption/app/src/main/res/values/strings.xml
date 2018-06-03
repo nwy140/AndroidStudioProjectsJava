@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Note Quickie</string>
+    <string name="app_name">Gigeption Workshop</string>
     <string name="edit_text_hint">Enter Your Message Here</string>
     <string name="save">Save</string>
     <string name="toast_cant_save">Saved Quickie Note</string>
