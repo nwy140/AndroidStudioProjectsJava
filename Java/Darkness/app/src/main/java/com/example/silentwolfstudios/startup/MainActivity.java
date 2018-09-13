@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Each time you open this app, a new darkness voice will be used\nDiscover them all!!!",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Darkness Voice " + ansemNum +" Activated",Toast.LENGTH_SHORT).show();
-
+        if(ansemNum==3){       Toast.makeText(MainActivity.this,"All Darkness voice Activated",Toast.LENGTH_SHORT).show();
+        }
         if(x_bladeNo == 8){
             Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
         }
