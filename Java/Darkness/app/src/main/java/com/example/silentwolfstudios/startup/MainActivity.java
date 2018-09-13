@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Each time you open this app, a new darkness voice will be used\nDiscover them all!!!",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Darkness Voice " + ansemNum +" Activated",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Reach 500 Darkness to unlock everlasting darkness mode!!!",Toast.LENGTH_SHORT).show();
+
         if(ansemNum==3){       Toast.makeText(MainActivity.this,"All Darkness voice Activated",Toast.LENGTH_SHORT).show();
         }
         if(x_bladeNo == 8){
@@ -144,7 +146,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     public void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
        // mInterstitialAd.setAdUnitId("ca-app-pub-3043579075978700/4699570562");
-        mInterstitialAd.setAdUnitId("ca-app-pub-3043579075978700/6240717097");
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
 
         mInterstitialAd.setAdListener(new AdListener() {
 
