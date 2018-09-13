@@ -46,7 +46,17 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         int random = new Random().nextInt((7-1) + 1) + 1;
         ansemNum = random;
         resID = getResId("dark"+ansemNum, R.raw.class); // or other resource class
-        Toast.makeText(MainActivity.this,"Ansem Voice " + ansemNum +" Activated",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Each time you open this app, a new darkness voice will be used\nDiscover them all!!!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Darkness Voice " + ansemNum +" Activated",Toast.LENGTH_SHORT).show();
+
+        if(x_bladeNo == 8){
+            Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
+        }
+        else if(x_bladeNo == 15){
+            Toast.makeText(MainActivity.this,"Each time you open this app, a new darkness voice will be used",Toast.LENGTH_SHORT).show();
+        }
+
 
         final MediaPlayer x_blade= MediaPlayer.create(MainActivity.this,resID);
         if(x_blade.isPlaying()){x_blade.release();}
