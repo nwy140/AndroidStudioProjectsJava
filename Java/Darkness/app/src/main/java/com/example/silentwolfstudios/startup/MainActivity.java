@@ -21,7 +21,6 @@ import com.google.android.gms.ads.AdListener;
 import java.lang.reflect.Field;
 import java.util.Random;
 
-
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
     public static int x_bladeNo = 0 ;
     public static int ansemNum = 1;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         ivAnsem = (ImageView) findViewById(R.id.ivAnsem);
         ivAnsem.setImageResource(R.drawable.ansem1);
 
-
     }
 
     public void ListenImage(){
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         ansemNum = random;
         resID = getResId("dark"+ansemNum, R.raw.class); // or other resource class
         Toast.makeText(MainActivity.this,"There are 7 seven darkness voice in this app",Toast.LENGTH_SHORT).show();
-        Toast.makeText(MainActivity.this,"Each time you open this app, a new darkness voice will be used\nDiscover them all!!!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Each time you reopen this app, a new darkness voice will be used\nDiscover them all!!!",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Darkness Voice " + ansemNum +" Activated",Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this,"Reach 500 Darkness to unlock everlasting darkness mode!!!",Toast.LENGTH_SHORT).show();
 
