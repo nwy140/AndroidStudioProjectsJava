@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-	<string name="interstitial_ad_sample">ca-app-pub-3940256099942544/1033173712</string>
 	<string name="interstitial_app_sample">ca-app-pub-3940256099942544~3347511713</string>
+	<string name="interstitial_ad_sample">ca-app-pub-3940256099942544/1033173712</string>
 
-	<string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
-	<string name="interstitial_app_unit_id">ca-app-pub-3940256099942544~3347511713</string>
+	<string name="interstitial_app_unit_id">ca-app-pub-3043579075978700~9416567391</string>
+	<string name="interstitial_ad_unit_id">ca-app-pub-3043579075978700/1071173519</string>
 
 
 

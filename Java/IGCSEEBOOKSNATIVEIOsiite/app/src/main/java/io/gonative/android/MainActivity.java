@@ -204,11 +204,15 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
         MobileAds.initialize(this, getString(R.string.interstitial_app_unit_id));
 
         loadInterstitialAd();
+
+        Toast.makeText(getApplicationContext(), "Select Menu and Choose a topic, Read IGCSE Ebooks for Free. Disclaimer: This app does not host the ebooks and is therefore irresponsible for any copyright infringement", Toast.LENGTH_LONG).show();
+
+
         // End call test ads
+
+
         AppConfig appConfig = AppConfig.getInstance(this);
         GoNativeApplication application = (GoNativeApplication)getApplication();
-        Toast.makeText(getApplicationContext(), "Show my ass", Toast.LENGTH_LONG).show();
-
 
         setScreenOrientationPreference();
 
