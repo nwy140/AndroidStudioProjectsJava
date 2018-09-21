@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
 
-        MobileAds.initialize(this, "ca-app-pub-3043579075978700~2137820558");
+        MobileAds.initialize(this, "ca-app-pub-3043579075978700~5500034383");
 
         loadInterstitialAd();
         ListenImage();

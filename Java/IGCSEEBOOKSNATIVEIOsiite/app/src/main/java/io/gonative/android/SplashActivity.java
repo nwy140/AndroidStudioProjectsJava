@@ -63,6 +63,7 @@ public class SplashActivity extends AppCompatActivity {
             intent.putExtra("noSplash", true);
         }
         startActivity(intent);
+
         finish();
     }
 }

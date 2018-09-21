@@ -59,6 +59,9 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.applinks.AppLinkData;
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.onesignal.OneSignal;
 
 import org.json.JSONException;
@@ -79,7 +82,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import io.gonative.android.library.AppConfig;
-import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
+
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 
 public class MainActivity extends AppCompatActivity implements Observer, SwipeRefreshLayout.OnRefreshListener {
@@ -159,35 +162,53 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
 
     //init test ads
 
-    private PublisherInterstitialAd mPublisherInterstitialAd;
-// from https://developers.google.com/ad-manager/mobile-ads-sdk/android/interstitial
+    // InterstitialAd
+    private InterstitialAd mInterstitialAd;
+
+//https://code.tutsplus.com/tutorials/how-to-monetize-your-android-apps-with-admob--cms-29255
+
+    public void loadInterstitialAd() {
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+        mInterstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                // Toast.makeText(getApplicationContext(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                if(mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                //  Toast.makeText(getApplicationContext(), "onAdFailedToLoad()", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+    }
+    // from https://developers.google.com/ad-manager/mobile-ads-sdk/android/interstitial
 
     // end init test ads
 
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
+        // Call test ads
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+
+        MobileAds.initialize(this, getString(R.string.interstitial_app_unit_id));
+
+        loadInterstitialAd();
+        // End call test ads
         AppConfig appConfig = AppConfig.getInstance(this);
         GoNativeApplication application = (GoNativeApplication)getApplication();
+        Toast.makeText(getApplicationContext(), "Show my ass", Toast.LENGTH_LONG).show();
 
-        // Call test ads
-        mPublisherInterstitialAd = new PublisherInterstitialAd(this);
-        mPublisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
-        mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
-        if (mPublisherInterstitialAd.isLoaded()) {
-            mPublisherInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
-        mPublisherInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mPublisherInterstitialAd.loadAd(new PublisherAdRequest.Builder().build());
-            }
-
-        });
-        // End call test ads
 
         setScreenOrientationPreference();
 
@@ -247,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
 	    	setContentView(R.layout.activity_gonative);
         else
             setContentView(R.layout.activity_gonative_nonav);
+
 
 
         mProgress = findViewById(R.id.progress);
@@ -458,6 +480,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
         };
         LocalBroadcastManager.getInstance(this).registerReceiver(this.navigationTitlesChangedReceiver,
             new IntentFilter(AppConfig.PROCESSED_NAVIGATION_TITLES));
+
     }
 
     protected void onPause() {
@@ -474,6 +497,7 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
     @Override
     protected void onStart() {
         super.onStart();
+
         if (AppConfig.getInstance(this).oneSignalEnabled) {
             OneSignal.clearOneSignalNotifications();
         }
@@ -640,6 +664,8 @@ public class MainActivity extends AppCompatActivity implements Observer, SwipeRe
             this.mWebview.loadUrl(url);
 
         if (!isFromTab && this.tabManager != null) this.tabManager.selectTab(url, null);
+
+
     }
 
     public void loadUrlAndJavascript(String url, String javascript) {
