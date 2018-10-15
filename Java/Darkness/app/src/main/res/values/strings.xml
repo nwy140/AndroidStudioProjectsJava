@@ -17,6 +17,7 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="interstitial_ad_unit_id">ca-app-pub-3043579075978700/3372564498</string>
+    <string name="title_activity_splash">Splash</string>
 
 
 </resources>
