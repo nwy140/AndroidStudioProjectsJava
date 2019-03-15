@@ -3,20 +3,16 @@ package com.example.silentwolfstudios.startup;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 
@@ -44,10 +40,12 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
 
-        MobileAds.initialize(this, "ca-app-pub-3043579075978700~5500034383"); //always same no matter what app
+        // Advertisements code
+        /// Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 // Go to https://apps.admob.com/v2 for ads id
+        MobileAds.initialize(this, getString(R.string.app_ads_sample));
+        loadInterstitialAd();   //LoadBannerAd();
 
-        loadInterstitialAd();
-
+        // Your code
         initControls();
 
         LoadAndPlayVideo();
@@ -55,12 +53,13 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
     }
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop(){
         //Save your data here
-
-        finish(); //Kill Contect Activity.
+//        startActivity(new Intent(MainActivity.this, Splash.class)); //switch back to splash activity
+//        finish(); //Kill Contect Activity.
     }
+
+
 
     private void initControls()
     {
@@ -69,9 +68,11 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     }
 
     public void LoadAndPlayVideo(){
-        MediaPlayer mediaPlayer;
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.krabbord);
         mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(300f,300f);
         mediaPlayer.start();
 
         videoplay(videoV_Vid1);
@@ -127,8 +128,8 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
     public void loadInterstitialAd() {
         mInterstitialAd = new InterstitialAd(this);
-       // mInterstitialAd.setAdUnitId("ca-app-pub-3043579075978700/4699570562");
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+       // Sample ad unit banner id : ca-app-pub-3940256099942544/1033173712
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_sample));
 
         mInterstitialAd.setAdListener(new AdListener() {
 
@@ -163,5 +164,18 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
             return -1;
         }
     }
+
+    // Banner ads
+    private AdView mAdView;
+
+    public void LoadBannerAd(){
+        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView.setAdSize(AdSize.BANNER);
+        mAdView.setAdUnitId(getString(R.string.banner_ad_sample));
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+
 
 }

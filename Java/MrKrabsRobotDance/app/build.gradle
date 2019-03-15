@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.silentwolfstudios.darkness_kh"
+        applicationId "com.silentwolfstudios.RobotMrKrabsDance"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 2
