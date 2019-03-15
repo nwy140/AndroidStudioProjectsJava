@@ -7,48 +7,80 @@
     android:background="@color/black"
     tools:context="com.example.silentwolfstudios.startup.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ivAnsem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvX_Blade"
-        app:layout_constraintVertical_bias="0.181"
-        app:srcCompat="@drawable/krabborgicon" />
+        <Button
+            android:id="@+id/showGifOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Gif One"
+            android:textAllCaps="false"
+            android:textSize="20dp"/>
 
-    <TextView
-        android:id="@+id/tvX_Blade"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        android:text="Darkness"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/showGifTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Gif Two"
+            android:textAllCaps="false"
+            android:textSize="20dp"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvX_Blade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        <LinearLayout
+            android:id="@+id/gifLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
 
 <!--layout_weight stands for ratio of item taking up out of available layout space EG  -->
+
+
+
+<!--<ImageView-->
+<!--android:id="@+id/imageView"-->
+<!--android:layout_width="50dp"-->
+<!--android:layout_height="48dp"-->
+<!--android:layout_marginBottom="8dp"-->
+<!--android:layout_marginEnd="8dp"-->
+<!--android:layout_marginStart="8dp"-->
+<!--android:layout_marginTop="8dp"-->
+<!--app:layout_constraintBottom_toTopOf="@+id/tvX_Blade"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--/>-->
+
+
+<!--<ImageView-->
+<!--android:id="@+id/ivAnsem"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginBottom="80dp"-->
+<!--android:layout_marginEnd="8dp"-->
+<!--android:layout_marginStart="8dp"-->
+<!--android:layout_marginTop="8dp"-->
+<!--app:layout_constraintBottom_toBottomOf="parent"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toBottomOf="@+id/tvX_Blade"-->
+<!--app:layout_constraintVertical_bias="0.181"-->
+<!--app:srcCompat="@drawable/krabborgicon" />-->
+
+<!--<TextView-->
+<!--android:id="@+id/tvX_Blade"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="0dp"-->
+<!--android:layout_marginEnd="8dp"-->
+<!--android:layout_marginStart="8dp"-->
+<!--android:layout_marginTop="100dp"-->
+<!--android:text="Darkness"-->
+<!--android:textColor="@color/white"-->
+<!--app:layout_constraintEnd_toEndOf="parent"-->
+<!--app:layout_constraintStart_toStartOf="parent"-->
+<!--app:layout_constraintTop_toTopOf="parent" />-->
