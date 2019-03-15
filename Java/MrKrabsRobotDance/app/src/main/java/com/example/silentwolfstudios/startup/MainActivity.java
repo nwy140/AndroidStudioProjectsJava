@@ -1,5 +1,6 @@
 package com.example.silentwolfstudios.startup;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -52,14 +53,13 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
 
 
     }
+
+
     @Override
-    public void onStop(){
-        //Save your data here
-//        startActivity(new Intent(MainActivity.this, Splash.class)); //switch back to splash activity
-//        finish(); //Kill Contect Activity.
+    public void onResume() {
+        super.onResume();
+        videoV_Vid1.start();
     }
-
-
 
     private void initControls()
     {
@@ -68,8 +68,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
     }
 
     public void LoadAndPlayVideo(){
-        MediaPlayer mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
+        MediaPlayer mediaPlayer ;
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.krabbord);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(300f,300f);
@@ -93,6 +92,7 @@ public class MainActivity extends AppCompatActivity { //ctrl + p is used to show
                     Log.e("VidLogTag", "Could not setup media player for ringtone");
                     mPlayer = null;
                     return false;
+
                 }
                 mPlayer.setLooping(false);
                 mPlayer.start();
