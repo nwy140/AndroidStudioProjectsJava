@@ -1,8 +1,13 @@
 package com.example.silentwolfstudios.startup;
 
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -10,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.ads.MobileAds;
 
@@ -21,80 +27,97 @@ import com.google.android.gms.ads.InterstitialAd;
 
 import com.google.android.gms.ads.AdListener;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.net.URL;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity { //ctrl + p is used to show parameters of a method
-    private Button showGifOneButton = null;
 
-    private Button showGifTwoButton = null;
-
-    private LinearLayout gifLinearLayout = null;
+//    Button btn_Play;
+    VideoView videoV_Vid1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //setContentView method sets Activity currently being displayed
 
-        MobileAds.initialize(this, "ca-app-pub-3043579075978700~5500034383");
+        MobileAds.initialize(this, "ca-app-pub-3043579075978700~5500034383"); //always same no matter what app
 
         loadInterstitialAd();
-        MediaPlayer mp = new MediaPlayer();
-        mp.setDataSource("android.resource://" + this.getPackageName() + "/raw/krabvideo");
-        mp.prepare();
-        mp.start();
-
-        setTitle("dev2qa.com - Android Show Gif Use Movie Example.");
 
         initControls();
 
-        final ShowGifView showGifView = new ShowGifView(getApplicationContext());
-        gifLinearLayout.addView(showGifView);
-
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        showGifView.setLayoutParams(layoutParams);
+        LoadAndPlayVideo();
 
 
-        new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                showGifView.setGifImageDrawableId(R.drawable.krabdancing);
-                showGifView.drawGif();
-                //your method
-            }
-        }, 0, 1000);//put here time 1000 milliseconds=1 second
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Save your data here
 
-//        showGifTwoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showGifView.setGifImageDrawableId(R.drawable.krabdancing);
-//                showGifView.drawGif();
-//            }
-//        });
-
+        finish(); //Kill Contect Activity.
     }
 
     private void initControls()
     {
-        if(showGifOneButton == null)
-        {
-            showGifOneButton = (Button)findViewById(R.id.showGifOne);
-        }
-
-        if(showGifTwoButton == null)
-        {
-            showGifTwoButton = (Button)findViewById(R.id.showGifTwo);
-        }
-
-        if(gifLinearLayout == null)
-        {
-            gifLinearLayout = (LinearLayout) findViewById(R.id.gifLinearLayout);
-        }
+//        btn_Play =  (Button) findViewById(R.id.btn_play);
+        videoV_Vid1 = (VideoView) findViewById(R.id.videoV_Vid1);
     }
 
+    public void LoadAndPlayVideo(){
+        MediaPlayer mediaPlayer;
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.krabbord);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+
+        videoplay(videoV_Vid1);
+
+
+        videoV_Vid1.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                MediaPlayer mPlayer = new MediaPlayer();
+                mPlayer.setAudioStreamType(AudioManager.STREAM_RING);
+
+                try {
+                    mPlayer.setDataSource(getApplicationContext(),
+                            Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.bibububabububi));
+                    mPlayer.prepare();
+                } catch (IOException e) {
+                    Log.e("VidLogTag", "Could not setup media player for ringtone");
+                    mPlayer = null;
+                    return false;
+                }
+                mPlayer.setLooping(false);
+                mPlayer.start();
+
+                return false;
+            }
+        });
+
+
+    }
+
+    public void videoplay(VideoView v){
+        String videopath = "android.resource://" + getPackageName() + "/" + R.raw.krabvideo;
+        Uri url = Uri.parse(videopath);
+        videoV_Vid1.setVideoPath(videopath);
+        videoV_Vid1.start();
+        // loop
+        videoV_Vid1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+                mp.setVolume(0f, 0f);
+
+            }
+        });
+    }
 
 
 // InterstitialAd

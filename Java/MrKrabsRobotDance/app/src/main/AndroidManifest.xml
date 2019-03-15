@@ -18,7 +18,16 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".MainActivity">
 
+
+
         </activity>
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <!--Mr Krabs app general admob id : ca-app-pub-3043579075978700~8131450664-->
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3043579075978700~8131450664"/>
+
 
         <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data

@@ -7,35 +7,13 @@
     android:background="@color/black"
     tools:context="com.example.silentwolfstudios.startup.MainActivity">
 
-    <LinearLayout
+    <VideoView
+        android:id="@+id/videoV_Vid1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="16dp" />
 
-        <Button
-            android:id="@+id/showGifOne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Gif One"
-            android:textAllCaps="false"
-            android:textSize="20dp"/>
-
-        <Button
-            android:id="@+id/showGifTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Gif Two"
-            android:textAllCaps="false"
-            android:textSize="20dp"/>
-
-        <LinearLayout
-            android:id="@+id/gifLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
 
 <!--layout_weight stands for ratio of item taking up out of available layout space EG  -->
