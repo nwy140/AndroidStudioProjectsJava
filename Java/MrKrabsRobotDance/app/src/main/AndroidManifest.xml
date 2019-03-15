@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ansem2"
+        android:icon="@drawable/krabborgicon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ansem2"
+        android:roundIcon="@drawable/krabborgicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

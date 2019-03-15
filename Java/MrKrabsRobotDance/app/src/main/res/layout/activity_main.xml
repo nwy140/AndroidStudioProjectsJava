@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvX_Blade"
         app:layout_constraintVertical_bias="0.181"
-        app:srcCompat="@drawable/ansem2" />
+        app:srcCompat="@drawable/krabborgicon" />
 
     <TextView
         android:id="@+id/tvX_Blade"
